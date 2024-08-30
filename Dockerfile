@@ -1,14 +1,14 @@
-FROM python:3.8. AS builder
+FROM python:3.8
+#FROM docker pull python:3.8-slim-bullseye
+#FROM docker pull python:3.8.19-slim-bullseye
 
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1
-WORKDIR /app
+WORKDIR /code
 
-RUN python -m venv .venv
-COPY pyproject.toml ./
-RUN .venv/bin/pip install .
-FROM python:3.8.-slim
-WORKDIR /app
-COPY --from=builder /app/.venv .venv/
-COPY . .
-CMD ["/app/.venv/bin/fastapi", "run"]
+COPY . /code/
+
+# COPY ./requirements.txt /code/requirements.txt
+
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+
+
+CMD ["uvicorn", "src.fishmlserv.main:app", "--host", "0.0.0.0", "--port", "8080"]
