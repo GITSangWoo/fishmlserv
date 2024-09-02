@@ -16,5 +16,19 @@ $ uvicorn src.fishmlserv.main:app --reload # 변경된 코드가 적용되는 �
 ```bash
 $ uvicorn srci.fishmlserv.main:app --host 0.0.0.0 --port 8949 # [port default 8000]
 ```
+- Docker
+```bash
+$ sudo docker build -t fishmlserv:0.4.0 .
+$ sudo docker run -d --name fmlserv-040 -p 8877:8765 fishmlserv:0.4.0
+```
 
+- Fly.io
+```bash
+$ fly launch --no-deploy
+$ flyctl launch --name mariofish
+$ flyctl scale memory 256
+$ flyctl deploy
+```
 
+- Ref 
+* https://curlconverter.com/python
