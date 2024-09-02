@@ -27,6 +27,9 @@ CONTAINER ID   IMAGE              COMMAND                  CREATED          STAT
 # docker 컨테이너 안으로...
 $ sudo docker exec -it fml071 bash
 
+# 로그 확인
+$ sudo docker logs -f <CONTAINER ID|NAMES>
+
 # docker 컨테이너 안에서 ...
 root@7244097edb66:/code# cat /etc/os-release
 PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"
