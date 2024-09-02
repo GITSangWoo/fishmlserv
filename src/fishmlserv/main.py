@@ -52,16 +52,17 @@ def fish(length:float, weight:float):
         dict: 물고기 종류를 담은 딕셔너리
         
     """
-    ### 모델 불러오기 
-    #with open("/home/centa/code/fishmlserv/src/fishmlserv/model.pkl", "rb") as f:
-    #    fish_model = pickle.load(f)
-    # a=fish_model.predict([[length,weight]])
     
-    prediction="몰라"
-    #if a == 1:
-    #    prediction = "도미"
-    # else :
-    #    prediction = "빙어"
+    ### 모델 불러오기 
+    with open(get_model_path(), "rb") as f:
+        fish_model = pickle.load(f)
+        a=fish_model.predict([[length,weight]])
+    
+    
+    if a == 1:
+        prediction = "도미"
+    else :
+        prediction = "빙어"
 
     return {
                 "prediction" : prediction,
