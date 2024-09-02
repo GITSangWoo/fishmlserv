@@ -1,6 +1,7 @@
 from typing import Union
 import pickle
 from fastapi import FastAPI
+from fishmlserv.model.manager import get_model_path
 
 app = FastAPI()
 
