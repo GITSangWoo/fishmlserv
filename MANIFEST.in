@@ -1,2 +1,1 @@
-include *.pkl
-
+recursive-include fishmlserv *.pkl
