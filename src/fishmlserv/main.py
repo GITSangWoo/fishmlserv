@@ -52,13 +52,15 @@ def fish(length:float, weight:float):
         
     """
     ### 모델 불러오기 
-    with open("/home/centa/code/fishmlserv/src/fishmlserv/model.pkl", "rb") as f:
-        fish_model = pickle.load(f)
-    a=fish_model.predict([[length,weight]])
-    if a == 1:
-        prediction = "도미"
-    else :
-        prediction = "빙어"
+    #with open("/home/centa/code/fishmlserv/src/fishmlserv/model.pkl", "rb") as f:
+    #    fish_model = pickle.load(f)
+    # a=fish_model.predict([[length,weight]])
+    
+    prediction="몰라"
+    #if a == 1:
+    #    prediction = "도미"
+    # else :
+    #    prediction = "빙어"
 
     return {
                 "prediction" : prediction,
