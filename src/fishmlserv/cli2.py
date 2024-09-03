@@ -3,14 +3,12 @@ import json
 import typer
 
 
-app = typer.Typer()
-
 headers = {
             'accept': 'application/json',
         }
 
 @app.command()
-def main(l:int=0, w:int=0):
+def main(l:float=typer.Option(...,"--length","-l"), w:float=typer.Option(...,"--weight","-w")):
     if l :
         le=l
         if w:
@@ -29,6 +27,5 @@ def main(l:int=0, w:int=0):
         typer.echo("다시 ㄱ")
 
 
-if __name__ == "__main__":
-    app()
-
+def run_main():
+    typer.run(main)
