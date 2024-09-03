@@ -7,7 +7,6 @@ headers = {
             'accept': 'application/json',
         }
 
-@app.command()
 def main(l:float=typer.Option(...,"--length","-l"), w:float=typer.Option(...,"--weight","-w")):
     if l :
         le=l
