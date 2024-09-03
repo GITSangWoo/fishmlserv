@@ -14,6 +14,7 @@ license = {text = "MIT"}
 
 [project.scripts]
 get-model-path = 'fishmlserv.cli:print_path'
+prediction = 'fishmlserv.cli2:app'
 
 [tool.pdm]
 distribution = false
