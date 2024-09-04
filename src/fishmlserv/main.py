@@ -8,7 +8,6 @@ app = FastAPI()
 ### 모델 불러오기 
 with open(get_model_path(), "rb") as f:
     fish_model = pickle.load(f)
-    a=fish_model.predict([[length,weight]])
 
 @app.get("/")
 def read_root():
@@ -58,6 +57,7 @@ def fish(length:float, weight:float):
         
     """
     
+    a=fish_model.predict([[length,weight]])
     
     
     if a == 1:
