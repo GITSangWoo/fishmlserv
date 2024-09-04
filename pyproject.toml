@@ -24,3 +24,11 @@ note = [
     "notebook>=7.2.2",
     "matplotlib>=3.7.5",
 ]
+
+tests = [
+    "pytest>=8.3.2",
+]
+
+[tool.pytest.ini_options]
+pythonpath=["src"]
+
