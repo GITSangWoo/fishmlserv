@@ -1,4 +1,4 @@
-FROM leshgi2447/fishmlserv:0.8.4
+FROM datamario24/python311scikitlearn-fastapi:1.0.0
 
 WORKDIR /code
 
