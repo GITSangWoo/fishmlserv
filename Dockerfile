@@ -1,4 +1,6 @@
-FROM datamario24/python311scikitlearn-fastapi:1.0.0
+#FROM datamario24/python311scikitlearn-fastapi:1.0.0
+FROM dogcenta/fishmlserv:1.0.0
+
 
 WORKDIR /code
 
