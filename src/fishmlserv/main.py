@@ -5,6 +5,11 @@ from fishmlserv.model.manager import get_model_path
 
 app = FastAPI()
 
+### 모델 불러오기 
+with open(get_model_path(), "rb") as f:
+    fish_model = pickle.load(f)
+    a=fish_model.predict([[length,weight]])
+
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
@@ -53,10 +58,6 @@ def fish(length:float, weight:float):
         
     """
     
-    ### 모델 불러오기 
-    with open(get_model_path(), "rb") as f:
-        fish_model = pickle.load(f)
-        a=fish_model.predict([[length,weight]])
     
     
     if a == 1:
