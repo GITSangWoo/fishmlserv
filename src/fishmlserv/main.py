@@ -6,8 +6,22 @@ from fishmlserv.model.manager import get_model_path
 app = FastAPI()
 
 ### 모델 불러오기 
-with open(get_model_path(), "rb") as f:
-    fish_model = pickle.load(f)
+pkls=get_model_path()
+
+with open(pkls[0], "rb") as f:
+    fish_model1 = pickle.load(f)
+
+with open(pkls[1], "rb") as f:
+    fish_model5 = pickle.load(f)
+
+with open(pkls[2], "rb") as f:
+    fish_model15 = pickle.load(f)
+
+with open(pkls[3], "rb") as f:
+    fish_model25 = pickle.load(f)
+
+with open(pkls[4], "rb") as f:
+    fish_model49 = pickle.load(f)
 
 @app.get("/")
 def read_root():
@@ -44,7 +58,7 @@ dict: 물고기 종류를 담은 딕셔너리
 
 
 @app.get("/fish_ml_predictor")
-def fish(length:float, weight:float):
+def fish(n_neighbors:int,length:float, weight:float):
     """
     물고기의 종류 판별기
     
@@ -56,9 +70,16 @@ def fish(length:float, weight:float):
         dict: 물고기 종류를 담은 딕셔너리
         
     """
-    
-    a=fish_model.predict([[length,weight]])
-    
+    if n_neighbors == 1:
+        a=fish_model1.predict([[length,weight]])
+    elif n_neighbors == 5:
+        a=fish_model5.predict([[length,weight]])
+    elif n_neighbors == 15:
+        a=fish_model15.predict([[length,weight]])
+    elif n_neighbors == 25:
+        a=fish_model25.predict([[length,weight]])
+    elif n_neighbors == 49:
+        a=fish_model49.predict([[length,weight]])
     
     if a == 1:
         prediction = "도미"
@@ -66,6 +87,7 @@ def fish(length:float, weight:float):
         prediction = "빙어"
 
     return {
+                "n_neighbors" : n_neighbors,
                 "prediction" : prediction,
                 "length" : length,
                 "weight": weight
