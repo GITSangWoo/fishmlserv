@@ -81,7 +81,7 @@ with DAG(
 
         val_data=pd.read_parquet(load_path)
         val_data.replace({'Bream': 0, 'Smelt': 1}, inplace=True)
-
+        val_data.to_parquet(f"{save_path}/fish_transform.parquet")
         
         for i in range(4,8):
             cm=confusion_matrix(val_data.iloc[:,3],val_data.iloc[:,i])
